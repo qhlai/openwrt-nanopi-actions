@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt
+name: Neo2
 
 on:
   repository_dispatch:
@@ -18,20 +18,32 @@ on:
     paths:
       - '.config'
 #  schedule:
-#    - cron: 0 8 * * 5
+#    - cron: 0 9 * * 5
 #  watch:
 #    types: started
-
+# https://github.com/Lienol/openwrt.git
+# https://github.com/coolsnowwolf/lede
+# env:
+#  REPO_URL: https://github.com/coolsnowwolf/lede
+#  REPO_BRANCH: master
+#  CONFIG_FILE: .config
+#  DIY_SH: diy.sh
+#  SSH_ACTIONS: false
+#  UPLOAD_BIN_DIR: false
+#  UPLOAD_FIRMWARE: true
+#  UPLOAD_COWTRANSFER: false
+#  UPLOAD_WETRANSFER: false
+#  TZ: Asia/Shanghai
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/Lienol/openwrt.git
+  REPO_BRANCH: dev-19.07
   CONFIG_FILE: .config
   DIY_SH: diy.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: false
+  UPLOAD_COWTRANSFER: true
+  UPLOAD_WETRANSFER: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -58,7 +70,12 @@ jobs:
 
     - name: Clone source code
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-
+      
+    - name: 以前的package
+      run:  |
+        echo -e "" >> /root/Lienol/feeds.conf.default
+        echo -e "src-git oldlienol https://github.com/TinyTitanPro/lienol-openwrt-package" >> /root/Lienol/feeds.conf.default
+        
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
