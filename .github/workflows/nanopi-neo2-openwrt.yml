@@ -71,7 +71,8 @@ jobs:
         sudo -E swapoff -a
         sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc /swapfile
         sudo timedatectl set-timezone "$TZ"
-
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
 
   Build:
     needs: [Init]
