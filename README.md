@@ -1,36 +1,30 @@
-# Actions-OpenWrt
+# nanopi  Actions-OpenWrt
+full app 
+消极维护状态
+nanopi neo2 
+nanopi r2s
+nanopi r4s
+## Alive？
+test OK in 7.12.2020  
 
-[![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/P3TERX/Actions-OpenWrt/blob/master/LICENSE)
-![GitHub Stars](https://img.shields.io/github/stars/P3TERX/Actions-OpenWrt.svg?style=flat-square&label=Stars&logo=github)
-![GitHub Forks](https://img.shields.io/github/forks/P3TERX/Actions-OpenWrt.svg?style=flat-square&label=Forks&logo=github)
 
-Build OpenWrt using GitHub Actions
+## features：
 
-[Read the details in my blog (in Chinese) | 中文教程](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+add support for USB wireless 
 
-## Usage
+默认使用 [project-openwrt](https://github.com/project-openwrt/openwrt) [Lean's OpenWrt](https://github.com/coolsnowwolf/lede)的源
+## usage：
+fork and enable action in your repo
 
-- Click the [Use this template](https://github.com/P3TERX/Actions-OpenWrt/generate) button to create a new repository.
-- Generate `.config` files using [Lean's OpenWrt](https://github.com/coolsnowwolf/lede) source code. ( You can change it through environment variables in the workflow file. )
-- Push `.config` file to the GitHub repository, and the build starts automatically.Progress can be viewed on the Actions page.
-- When the build is complete, click the `Artifacts` button in the upper right corner of the Actions page to download the binaries.
+使用方法：fork后手动在action中启动编译
 
 ## Acknowledgments
-
-- [Microsoft](https://www.microsoft.com)
-- [Microsoft Azure](https://azure.microsoft.com)
-- [GitHub](https://github.com)
-- [GitHub Actions](https://github.com/features/actions)
-- [tmate](https://github.com/tmate-io/tmate)
-- [mxschmitt/action-tmate](https://github.com/mxschmitt/action-tmate)
-- [csexton/debugger-action](https://github.com/csexton/debugger-action)
-- [Cisco](https://www.cisco.com/)
-- [OpenWrt](https://github.com/openwrt/openwrt)
-- [Lean's OpenWrt](https://github.com/coolsnowwolf/lede)
-- [Cowtransfer](https://cowtransfer.com)
-- [WeTransfer](https://wetransfer.com/)
-- [Mikubill/transfer](https://github.com/Mikubill/transfer)
+[CN_SZTL's r2s](https://github.com/1715173329/nanopi-r2s-openwrt)
+[Microsoft](https://www.microsoft.com)  [Microsoft Azure](https://azure.microsoft.com) [GitHub](https://github.com)
+[GitHub Actions](https://github.com/features/actions) [tmate](https://github.com/tmate-io/tmate)
+[mxschmitt/action-tmate](https://github.com/mxschmitt/action-tmate) [csexton/debugger-action](https://github.com/csexton/debugger-action)
+[OpenWrt](https://github.com/openwrt/openwrt) [Lean's OpenWrt](https://github.com/coolsnowwolf/lede)
+[Cowtransfer](https://cowtransfer.com)  [WeTransfer](https://wetransfer.com/)
 
 ## License
-
-[MIT](https://github.com/P3TERX/Actions-OpenWrt/blob/master/LICENSE) © P3TERX
+MIT
