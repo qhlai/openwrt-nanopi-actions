@@ -75,6 +75,9 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
 
+    - name: Checkout Repository 测试
+      uses: actions/checkout@v2
+
     - name: Clone Source 下载源码
       working-directory: /workdir
       run: |
@@ -154,6 +157,10 @@ jobs:
    needs: [Build]
    runs-on: ubuntu-18.04
    steps:
+   
+    - name: Checkout Repository 测试
+      uses: actions/checkout@v2
+
     - name: Upload bin directory 上传目录
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
