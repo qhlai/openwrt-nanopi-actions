@@ -9,7 +9,7 @@ env:
   REPO_URL: https://github.com/project-openwrt/openwrt
   REPO_BRANCH: openwrt-18.06-k5.4
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: ./Device/r4s/config/snapshot-config.seed
+  CONFIG_FILE: ./Device/r4s/configs/snapshot-config.seed
   DIY_P1_SH: ./Device/r4s/diy-part1.sh
   DIY_P2_SH: ./Device/r4s/diy-part2.sh
   PATCH_1: ./Device/r4s/1806-modify_for_r4s.patch
@@ -157,7 +157,6 @@ jobs:
    needs: [Build]
    runs-on: ubuntu-18.04
    steps:
-   
     - name: Checkout Repository 测试
       uses: actions/checkout@v2
 
