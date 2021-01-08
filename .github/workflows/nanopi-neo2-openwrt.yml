@@ -22,7 +22,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  Init:
+  Build:
     runs-on: ubuntu-18.04
     steps:
     - name: Checkout Repository 测试
@@ -70,10 +70,8 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
-  Build:
-    needs: [Init]
-    runs-on: ubuntu-18.04
-    steps:
+    - name: Checkout Repository 测试
+      uses: actions/checkout@v2
 
     - name: Clone Source 下载源码
       working-directory: /workdir
@@ -94,11 +92,13 @@ jobs:
        cd openwrt
        ./scripts/feeds update -a
        ./scripts/feeds install -a 
-
-    #- name: Add patch 性能补丁
+    
+    #- name: Add patch 打补丁
     #  run: |
     #    cd openwrt
-    #    patch -p1 < "${GITHUB_WORKSPACE}/Device/r2s/patches/snapshot-modify_for_r2s.patch"
+    #    wget https://raw.githubusercontent.com/1715173329/nanopi-r4s-openwrt/master/patches/snapshot-modify_for_r4s.patch
+    #    patch -p1 < "snapshot-modify_for_r4s.patch"
+    #    #patch -p1 < "${GITHUB_WORKSPACE}/Device/r4s/patches/snapshot-modify_for_r4s.patch"
 
     - name: Load custom configuration 自定义配置
       run: |
@@ -148,10 +148,10 @@ jobs:
     - name: Check space usage 检查磁盘使用
       if: (!cancelled())
       run: df -hT
-  Upload:
-   needs: [Build]
-   runs-on: ubuntu-18.04
-   steps:
+
+    - name: Checkout Repository 测试
+      uses: actions/checkout@v2
+
     - name: Upload bin directory 上传目录
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
@@ -213,7 +213,7 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
   Cleanup-Old-Artifacts:
-    needs: [Build,Upload]
+    needs: [Build]
     runs-on: ubuntu-18.04
     steps:
     - name: Cleanup Old Action Artifacts
