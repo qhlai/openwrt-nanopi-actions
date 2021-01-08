@@ -148,7 +148,7 @@ jobs:
     - name: Check space usage 检查磁盘使用
       if: (!cancelled())
       run: df -hT
-      
+
     - name: Checkout Repository 测试
       uses: actions/checkout@v2
 
@@ -213,7 +213,7 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
   Cleanup-Old-Artifacts:
-    needs: [Build,Upload]
+    needs: [Build]
     runs-on: ubuntu-18.04
     steps:
     - name: Cleanup Old Action Artifacts
