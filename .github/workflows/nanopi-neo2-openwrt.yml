@@ -50,10 +50,6 @@ jobs:
         [ -e $PATCH_1 ] && cat $PATCH_1
         echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-    - name: Path 路径设定
-      run: |
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
 
     - name: Init Building Dependencies 初始化编译依赖
       env:
